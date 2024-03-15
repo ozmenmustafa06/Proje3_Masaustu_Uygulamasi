@@ -14,6 +14,10 @@ class App(QWidget):
         self.layout = QVBoxLayout()
         self.setLayout(self.layout)
 
+        # Dil seçimi için etiket ekleniyor
+        self.language_label = QLabel('Dil:' if self.language == 'Turkish' else 'Language:')
+        self.layout.addWidget(self.language_label)
+
         self.language_selector = QComboBox()
         self.language_selector.addItems(['Türkçe', 'English'])
         self.language_selector.currentTextChanged.connect(self.update_language)
@@ -47,6 +51,7 @@ class App(QWidget):
         self.function_menu.setItemText(0, "Fonksiyon Seçin" if self.language == 'Turkish' else "Select Function")
         self.function_menu.setItemText(1, "Çeviri Uygulaması" if self.language == 'Turkish' else "Translation Application")
         self.function_menu.setItemText(2, "Rehber Uygulaması" if self.language == 'Turkish' else "Contact Application")
+        self.language_label.setText('Dil:' if self.language == 'Turkish' else 'Language:')
 
     def on_login_clicked(self):
         password = self.password_input.text()
